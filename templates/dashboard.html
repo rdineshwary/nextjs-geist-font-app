@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<div class="dashboard-cards">
+    <div class="card">
+        <h3>Total Books</h3>
+        <p>{{ total_books }}</p>
+    </div>
+    <div class="card">
+        <h3>Total Users</h3>
+        <p>{{ total_users }}</p>
+    </div>
+    <div class="card">
+        <h3>Active Borrowings</h3>
+        <p>{{ active_borrowings }}</p>
+    </div>
+</div>
+
+<div class="card">
+    <h3>Recent Activities</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Activity</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for activity in recent_activities %}
+            <tr>
+                <td>{{ activity.description }}</td>
+                <td>{{ activity.date }}</td>
+                <td class="{{ activity.status_class }}">{{ activity.status_text }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
